@@ -1,0 +1,148 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Mahamudul Hasan, amarSource, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.37.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.18
+Assembler:       Armasm.exe V6.18
+Linker/Locator:  ArmLink.exe V6.18
+Library Manager: ArmAr.exe V6.18
+Hex Converter:   FromElf.exe V6.18
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
+Dialog DLL:      TCM.DLL V1.56.1.0
+ 
+<h2>Project:</h2>
+H:\Microcontroller\stm32\Keil\v2.0_I2C_Master_Transmit\i2c_master_transmit.uvprojx
+Project File Date:  08/12/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+main.c(3): warning: In file included from...
+./RCC.h(9): warning: no newline at end of file [-Wnewline-eof]
+void sysClockConfig(void);
+                          ^
+main.c(4): warning: In file included from...
+./Delay.h(2): warning: In file included from...
+./RCC.h(9): warning: no newline at end of file [-Wnewline-eof]
+void sysClockConfig(void);
+                          ^
+main.c(4): warning: In file included from...
+./Delay.h(6): warning: no newline at end of file [-Wnewline-eof]
+void Delay_ms(uint16_t ms);
+                           ^
+main.c(8): warning: // comments are not allowed in this language [-Wcomment]
+  // 1. Enable the i2c clock and gpio clock
+  ^
+main.c(21): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+        I2C1->CR1 &= ~(1 << 15);
+                  ~~ ^~~~~~~~~~
+main.c(27): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+        I2C1->CCR &= ~(1 << 15); // Sm mode
+                  ~~ ^~~~~~~~~~
+main.c(28): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+        I2C1->CCR &= ~(1 << 14); // duty is also 0, as we not use the fast mode
+                  ~~ ^~~~~~~~~~
+main.c(7): warning: no previous prototype for function 'I2C_Config' [-Wmissing-prototypes]
+void I2C_Config(void){
+     ^
+main.c(7): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void I2C_Config(void){
+^
+static 
+main.c(39): warning: no previous prototype for function 'I2C_Start' [-Wmissing-prototypes]
+void I2C_Start(void){
+     ^
+main.c(39): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void I2C_Start(void){
+^
+static 
+main.c(47): warning: no previous prototype for function 'I2C_Write' [-Wmissing-prototypes]
+void I2C_Write(uint8_t data){
+     ^
+main.c(47): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void I2C_Write(uint8_t data){
+^
+static 
+main.c(63): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        uint8_t temp = I2C1->SR1 | I2C1->SR2;
+                ~~~~   ~~~~~~~~~~^~~~~~~~~~~
+main.c(63): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+        uint8_t temp = I2C1->SR1 | I2C1->SR2;
+                ^
+main.c(63): warning: unused variable 'temp' [-Wunused-variable]
+main.c(57): warning: no previous prototype for function 'I2C_Address' [-Wmissing-prototypes]
+void I2C_Address(uint8_t address){
+     ^
+main.c(57): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void I2C_Address(uint8_t address){
+^
+static 
+main.c(67): warning: no previous prototype for function 'I2C_Stop' [-Wmissing-prototypes]
+void I2C_Stop(void){
+     ^
+main.c(67): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void I2C_Stop(void){
+^
+static 
+main.c(72): warning: no previous prototype for function 'I2C_WriteMulti' [-Wmissing-prototypes]
+void I2C_WriteMulti(uint8_t *data, uint8_t size){
+     ^
+main.c(72): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void I2C_WriteMulti(uint8_t *data, uint8_t size){
+^
+static 
+main.c(107): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+main.c(105): warning: 'return' will never be executed [-Wunreachable-code-return]
+return 0;
+       ^
+18 warnings generated.
+compiling main.c...
+linking...
+Program Size: Code=1108 RO-data=468 RW-data=0 ZI-data=1632  
+".\Objects\i2c_master_transmit.axf" - 0 Error(s), 18 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.16.0.pack
+                Keil.STM32F4xx_DFP.2.16.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Target_1
+  C:/Users/Hasan/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/Hasan/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:2.6.3
+      Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
+      Source file:   MDK/Device/Source/ARM/STM32F446xx_OPT.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f446xx.s
+      Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
