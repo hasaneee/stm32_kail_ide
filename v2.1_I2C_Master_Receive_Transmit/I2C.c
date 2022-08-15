@@ -76,3 +76,69 @@ void I2C_WriteMulti(uint8_t *data, uint8_t size){
 	while(!(I2C1->SR1 & (1 << 2))); // wait for BTF bit to set
 	
 }
+
+void I2C_Read(uint8_t address, uint8_t *buffer, uint8_t size){
+	uint8_t remaning = size;
+	if(size == 1){
+		/**** If single byte need to read ****/
+		// (a) Write the slave Address, and wait for the ADDR bit (bit 1 in SR1) to be set
+		I2C1->DR = address;
+		while(!(I2C1->SR1 & (1 << 1)));
+		
+		//(b) the Acknowledge disable is made during EV6 (before ADDR flag is cleared) and the STOP condition generation is made after EV6
+		I2C1->CR1 &= ~(1 << 10);
+		uint8_t temp = I2C1->SR1 | I2C1->SR2;
+		I2C1->CR1 |= (1 << 9);
+		
+		// (c) Wait for the RXNE (Receive Buffer not Empty) bit to set
+		while(!(I2C1->SR1 & (1 << 6)));
+		
+		// (d) Read the data from the DR
+		buffer[size-remaning] = I2C1->DR;
+	} else {
+		/*** If Multiple BYTES needs to be read ***/
+		// (a) Write the slave Address, and wait for the ADDR bit (bit 1 in SR1) to be set
+		I2C1->DR = address;
+		while(!(I2C1->SR1 & (1 << 1)));
+		
+		// (b) Clear the ADDR bit by reading the SR1 and SR2 Registers
+		uint8_t temp = I2C1->SR1 | I2C1->SR2;
+		
+		while(remaning > 2){
+			// (c) Wait for the RXNE (Receive Buffer not Empty) bit to set
+			while(!(I2C1->SR1 & (1 << 6)));
+		
+			// (d) Read the data from the DR
+			buffer[size-remaning] = I2C1->DR;
+			
+			//e) Generate the Acknowlegment by settint the ACK (bit 10 in CR1)
+			I2C1->CR1 |= (1 <<10);
+			remaning--;
+		}
+		
+			// Wait for the RXNE (Receive Buffer not Empty) bit to set
+			while(!(I2C1->SR1 & (1 << 6)));
+		
+			// Read the data from the DR
+			buffer[size-remaning] = I2C1->DR; // Read the SECOND LAST BYTE
+		
+		// (f) To generate the nonacknowledge pulse after the last received data byte, the ACK bit must be cleared just after reading the 
+		// second last data byte (after second last RxNE event)
+		I2C1->CR1 &= ~(1 <<10); // clear the ACK bit
+		
+		// (g) In order to generate the Stop/Restart condition, software must set the STOP/START bit 
+	   // after reading the second last data byte (after the second last RxNE event)
+		I2C1->CR1 |= (1 << 9); // Stop I2C
+		remaning --;
+		
+		// read the last byte
+		while(!(I2C1->SR1 & (1 << 6)));
+		buffer[size-remaning] = I2C1->DR;
+		
+		
+		
+	
+	}
+	
+
+}
