@@ -17,75 +17,104 @@ Library Manager: ArmAr.exe V6.18
 Hex Converter:   FromElf.exe V6.18
 CPU DLL:         SARMCM3.DLL V5.37.0.0
 Dialog DLL:      DCM.DLL V1.17.5.0
-Target DLL:      UL2CM3.DLL V1.164.7.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
 Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
 H:\Microcontroller\stm32\Keil\v2.1_I2C_Master_Receive_Transmit\I2C_Master_Receive_Transmit.uvprojx
-Project File Date:  08/15/2022
+Project File Date:  08/18/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-I2C.c(5): warning: // comments are not allowed in this language [-Wcomment]
-  // 1. Enable the i2c clock and gpio clock
-  ^
-I2C.c(18): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-        I2C1->CR1 &= ~(1 << 15);
-                  ~~ ^~~~~~~~~~
-I2C.c(24): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-        I2C1->CCR &= ~(1 << 15); // Sm mode
-                  ~~ ^~~~~~~~~~
-I2C.c(25): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-        I2C1->CCR &= ~(1 << 14); // duty is also 0, as we not use the fast mode
-                  ~~ ^~~~~~~~~~
-I2C.c(66): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
-        uint8_t temp = I2C1->SR1 | I2C1->SR2;
-                ~~~~   ~~~~~~~~~~^~~~~~~~~~~
-I2C.c(66): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
-        uint8_t temp = I2C1->SR1 | I2C1->SR2;
-                ^
-I2C.c(66): warning: unused variable 'temp' [-Wunused-variable]
-I2C.c(95): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                I2C1->CR1 &= ~(1 << 10);
-                          ~~ ^~~~~~~~~~
-I2C.c(96): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
-                uint8_t temp = I2C1->SR1 | I2C1->SR2;
-                        ~~~~   ~~~~~~~~~~^~~~~~~~~~~
-I2C.c(103): warning: implicit conversion loses integer precision: 'volatile uint32_t' (aka 'volatile unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
-                buffer[size-remaning] = I2C1->DR;
-                                      ~ ~~~~~~^~
-I2C.c(96): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
-                uint8_t temp = I2C1->SR1 | I2C1->SR2;
-                        ^
-I2C.c(96): warning: unused variable 'temp' [-Wunused-variable]
-I2C.c(111): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
-                uint8_t temp = I2C1->SR1 | I2C1->SR2;
-                        ~~~~   ~~~~~~~~~~^~~~~~~~~~~
-I2C.c(118): warning: implicit conversion loses integer precision: 'volatile uint32_t' (aka 'volatile unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
-                        buffer[size-remaning] = I2C1->DR;
-                                              ~ ~~~~~~^~
-I2C.c(129): warning: implicit conversion loses integer precision: 'volatile uint32_t' (aka 'volatile unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
-                        buffer[size-remaning] = I2C1->DR; // Read the SECOND LAST BYTE
-                                              ~ ~~~~~~^~
-I2C.c(133): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                I2C1->CR1 &= ~(1 <<10); // clear the ACK bit
-                          ~~ ^~~~~~~~~
-I2C.c(142): warning: implicit conversion loses integer precision: 'volatile uint32_t' (aka 'volatile unsigned int') to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
-                buffer[size-remaning] = I2C1->DR;
-                                      ~ ~~~~~~^~
-I2C.c(111): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
-                uint8_t temp = I2C1->SR1 | I2C1->SR2;
-                        ^
-I2C.c(111): warning: unused variable 'temp' [-Wunused-variable]
-I2C.c(150): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-20 warnings generated.
-compiling I2C.c...
+main.c(4): warning: In file included from...
+./I2C.h(74): warning: // comments are not allowed in this language [-Wcomment]
+//void I2C_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi);
+^
+main.c(19): warning: no previous extern declaration for non-static variable 'Accel_X_RAW' [-Wmissing-variable-declarations]
+int16_t Accel_X_RAW = 0;
+        ^
+main.c(19): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int16_t Accel_X_RAW = 0;
+^
+main.c(20): warning: no previous extern declaration for non-static variable 'Accel_Y_RAW' [-Wmissing-variable-declarations]
+int16_t Accel_Y_RAW = 0;
+        ^
+main.c(20): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int16_t Accel_Y_RAW = 0;
+^
+main.c(21): warning: no previous extern declaration for non-static variable 'Accel_Z_RAW' [-Wmissing-variable-declarations]
+int16_t Accel_Z_RAW = 0;
+        ^
+main.c(21): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int16_t Accel_Z_RAW = 0;
+^
+main.c(28): warning: // comments are not allowed in this language [-Wcomment]
+// 1. START the I2C
+^
+main.c(25): warning: no previous prototype for function 'MPU_Write' [-Wmissing-prototypes]
+void MPU_Write (uint8_t Address, uint8_t Reg, uint8_t Data)
+     ^
+main.c(25): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void MPU_Write (uint8_t Address, uint8_t Reg, uint8_t Data)
+^
+static 
+main.c(41): warning: no previous prototype for function 'MPU_Read' [-Wmissing-prototypes]
+void MPU_Read (uint8_t Address, uint8_t Reg, uint8_t *buffer, uint8_t size)
+     ^
+main.c(41): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void MPU_Read (uint8_t Address, uint8_t Reg, uint8_t *buffer, uint8_t size)
+^
+static 
+main.c(60): warning: no previous prototype for function 'MPU6050_Init' [-Wmissing-prototypes]
+void MPU6050_Init (void)
+     ^
+main.c(60): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void MPU6050_Init (void)
+^
+static 
+main.c(110): warning: implicit conversion loses floating-point precision: 'double' to 'float' [-Wimplicit-float-conversion]
+        Ax = Accel_X_RAW/16384.0;
+           ~ ~~~~~~~~~~~^~~~~~~~
+main.c(111): warning: implicit conversion loses floating-point precision: 'double' to 'float' [-Wimplicit-float-conversion]
+        Ay = Accel_Y_RAW/16384.0;
+           ~ ~~~~~~~~~~~^~~~~~~~
+main.c(112): warning: implicit conversion loses floating-point precision: 'double' to 'float' [-Wimplicit-float-conversion]
+        Az = Accel_Z_RAW/16384.0;
+           ~ ~~~~~~~~~~~^~~~~~~~
+main.c(92): warning: no previous prototype for function 'MPU6050_Read_Accel' [-Wmissing-prototypes]
+void MPU6050_Read_Accel (void)
+     ^
+main.c(92): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void MPU6050_Read_Accel (void)
+^
+static 
+main.c(138): warning: 'return' will never be executed [-Wunreachable-code-return]
+return 0;
+       ^
+main.c(23): warning: no previous extern declaration for non-static variable 'Ax' [-Wmissing-variable-declarations]
+float Ax, Ay, Az;
+      ^
+main.c(23): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+float Ax, Ay, Az;
+^
+main.c(23): warning: no previous extern declaration for non-static variable 'Ay' [-Wmissing-variable-declarations]
+float Ax, Ay, Az;
+          ^
+main.c(23): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+float Ax, Ay, Az;
+^
+main.c(23): warning: no previous extern declaration for non-static variable 'Az' [-Wmissing-variable-declarations]
+float Ax, Ay, Az;
+              ^
+main.c(23): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+float Ax, Ay, Az;
+^
+16 warnings generated.
+compiling main.c...
 linking...
-Program Size: Code=3172 RO-data=468 RW-data=0 ZI-data=1656  
-".\Objects\I2C_Master_Receive_Transmit.axf" - 0 Error(s), 20 Warning(s).
+Program Size: Code=3060 RO-data=468 RW-data=0 ZI-data=1656  
+".\Objects\I2C_Master_Receive_Transmit.axf" - 0 Error(s), 16 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -112,8 +141,8 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:2.6.3
       Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
-      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
       Source file:   MDK/Device/Source/ARM/STM32F446xx_OPT.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f446xx.s
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
 Build Time Elapsed:  00:00:01

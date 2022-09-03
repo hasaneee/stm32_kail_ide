@@ -3,6 +3,7 @@
 #include "Delay.h"
 #include "I2C.h"
 
+
 #define MPU6050_ADDR 0xD0
 
 
@@ -23,37 +24,37 @@ float Ax, Ay, Az;
 
 void MPU_Write (uint8_t Address, uint8_t Reg, uint8_t Data)
 {
-	/**** STEPS FOLLOWED  ************
-1. START the I2C
-2. Send the ADDRESS of the Device
-3. Send the ADDRESS of the Register, where you want to write the data to
-4. Send the DATA
-5. STOP the I2C
-*/
-	I2C_Start ();
-	I2C_Address (Address);
-	I2C_Write (Reg);
-	I2C_Write (Data);
-	I2C_Stop ();
+	
+// 1. START the I2C
+// 2. Send the ADDRESS of the Device
+// 3. Send the ADDRESS of the Register, where you want to write the data to
+// 4. Send the DATA
+// 5. STOP the I2C
+
+	I2C_Start (I2C1);
+	I2C_Address (I2C1, Address);
+	I2C_Write (I2C1, Reg);
+	I2C_Write (I2C1, Data);
+	I2C_Stop (I2C1);
 }
 
 void MPU_Read (uint8_t Address, uint8_t Reg, uint8_t *buffer, uint8_t size)
 {
-	/**** STEPS FOLLOWED  ************
-1. START the I2C
-2. Send the ADDRESS of the Device
-3. Send the ADDRESS of the Register, where you want to READ the data from
-4. Send the RESTART condition
-5. Send the Address (READ) of the device
-6. Read the data
-7. STOP the I2C
-*/
-	I2C_Start ();
-	I2C_Address (Address);
-	I2C_Write (Reg);
-	I2C_Start ();  // repeated start
-	I2C_Read (Address+0x01, buffer, size);
-	I2C_Stop ();
+	
+// 1. START the I2C
+// 2. Send the ADDRESS of the Device
+// 3. Send the ADDRESS of the Register, where you want to READ the data from
+// 4. Send the RESTART condition
+// 5. Send the Address (READ) of the device
+// 6. Read the data
+// 7. STOP the I2C
+
+	I2C_Start (I2C1);
+	I2C_Address (I2C1, Address);
+	I2C_Write (I2C1, Reg);
+	I2C_Start (I2C1);  // repeated start
+	I2C_Read (I2C1, Address+0x01, buffer, size);
+	I2C_Stop (I2C1);
 }
 
 void MPU6050_Init (void)
@@ -101,10 +102,10 @@ void MPU6050_Read_Accel (void)
 	Accel_Y_RAW = (int16_t)(Rx_data[2] << 8 | Rx_data [3]);
 	Accel_Z_RAW = (int16_t)(Rx_data[4] << 8 | Rx_data [5]);
 
-	/*** convert the RAW values into acceleration in 'g'
-	     we have to divide according to the Full scale value set in FS_SEL
-	     I have configured FS_SEL = 0. So I am dividing by 16384.0
-	     for more details check ACCEL_CONFIG Register              ****/
+	 //convert the RAW values into acceleration in 'g'
+	 //we have to divide according to the Full scale value set in FS_SEL
+	 //I have configured FS_SEL = 0. So I am dividing by 16384.0
+	 //for more details check ACCEL_CONFIG Register              
 
 	Ax = Accel_X_RAW/16384.0;
 	Ay = Accel_Y_RAW/16384.0;
@@ -115,14 +116,26 @@ void MPU6050_Read_Accel (void)
 int main(void){
 	sysClockConfig();
 	TIM6Config();
-	I2C_Config();
+	I2C_Config(I2C1);
 	
 	MPU6050_Init();
 	
 	while(1){
 		MPU6050_Read_Accel();
 		Delay_ms(1000);
+		
+		/*
+		for(int i=0; i<8; i++){
+		I2C_Start(I2C1);
+		I2C_Address(I2C1, 0x4E);
+		I2C_Write(I2C1, 1 << i);
+		I2C_Stop(I2C1);
+		Delay_ms(100);
+	}
+	*/
 	}
 
 return 0;
 }
+
+

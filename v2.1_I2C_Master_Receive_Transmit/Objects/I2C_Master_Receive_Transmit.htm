@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\I2C_Master_Receive_Transmit.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\I2C_Master_Receive_Transmit.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Wed Aug 17 00:37:33 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sat Sep  3 22:37:25 2022
 <BR><P>
-<H3>Maximum Stack Usage =         84 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         88 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; MPU6050_Read_Accel &rArr; MPU_Read &rArr; I2C_Read
 <P>
@@ -245,7 +245,7 @@ Global Symbols
 <P><STRONG><a name="[ab]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[6c]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 84 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 88 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; MPU6050_Read_Accel &rArr; MPU_Read &rArr; I2C_Read
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -657,42 +657,48 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 </UL>
 
-<P><STRONG><a name="[7f]"></a>I2C_Address</STRONG> (Thumb, 72 bytes, Stack size 4 bytes, i2c.o(.text.I2C_Address))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = I2C_Address
+<P><STRONG><a name="[7f]"></a>I2C_Address</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, i2c.o(.text.I2C_Address))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = I2C_Address
 </UL>
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write
 </UL>
 
-<P><STRONG><a name="[85]"></a>I2C_Config</STRONG> (Thumb, 202 bytes, Stack size 0 bytes, i2c.o(.text.I2C_Config))
-<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[85]"></a>I2C_Config</STRONG> (Thumb, 192 bytes, Stack size 4 bytes, i2c.o(.text.I2C_Config))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = I2C_Config
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[81]"></a>I2C_Read</STRONG> (Thumb, 444 bytes, Stack size 12 bytes, i2c.o(.text.I2C_Read))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = I2C_Read
+<P><STRONG><a name="[81]"></a>I2C_Read</STRONG> (Thumb, 336 bytes, Stack size 16 bytes, i2c.o(.text.I2C_Read))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = I2C_Read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read
 </UL>
 
-<P><STRONG><a name="[7e]"></a>I2C_Start</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, i2c.o(.text.I2C_Start))
-<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read
+<P><STRONG><a name="[7e]"></a>I2C_Start</STRONG> (Thumb, 42 bytes, Stack size 4 bytes, i2c.o(.text.I2C_Start))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = I2C_Start
+</UL>
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write
 </UL>
 
-<P><STRONG><a name="[82]"></a>I2C_Stop</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, i2c.o(.text.I2C_Stop))
-<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read
+<P><STRONG><a name="[82]"></a>I2C_Stop</STRONG> (Thumb, 18 bytes, Stack size 4 bytes, i2c.o(.text.I2C_Stop))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = I2C_Stop
+</UL>
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write
 </UL>
 
-<P><STRONG><a name="[80]"></a>I2C_Write</STRONG> (Thumb, 68 bytes, Stack size 4 bytes, i2c.o(.text.I2C_Write))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = I2C_Write
+<P><STRONG><a name="[80]"></a>I2C_Write</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, i2c.o(.text.I2C_Write))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = I2C_Write
 </UL>
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write
 </UL>
 
 <P><STRONG><a name="[77]"></a>MPU6050_Init</STRONG> (Thumb, 110 bytes, Stack size 24 bytes, main.o(.text.MPU6050_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = MPU6050_Init &rArr; MPU_Read &rArr; I2C_Read
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = MPU6050_Init &rArr; MPU_Read &rArr; I2C_Read
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write
@@ -701,7 +707,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[7a]"></a>MPU6050_Read_Accel</STRONG> (Thumb, 256 bytes, Stack size 32 bytes, main.o(.text.MPU6050_Read_Accel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = MPU6050_Read_Accel &rArr; MPU_Read &rArr; I2C_Read
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = MPU6050_Read_Accel &rArr; MPU_Read &rArr; I2C_Read
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
@@ -711,8 +717,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[78]"></a>MPU_Read</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, main.o(.text.MPU_Read))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = MPU_Read &rArr; I2C_Read
+<P><STRONG><a name="[78]"></a>MPU_Read</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, main.o(.text.MPU_Read))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = MPU_Read &rArr; I2C_Read
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Read
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Stop
@@ -724,8 +730,8 @@ Global Symbols
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Init
 </UL>
 
-<P><STRONG><a name="[79]"></a>MPU_Write</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, main.o(.text.MPU_Write))
-<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = MPU_Write &rArr; I2C_Write
+<P><STRONG><a name="[79]"></a>MPU_Write</STRONG> (Thumb, 70 bytes, Stack size 16 bytes, main.o(.text.MPU_Write))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = MPU_Write &rArr; I2C_Write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Stop
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Write
@@ -742,8 +748,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6d]"></a>main</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = main &rArr; MPU6050_Read_Accel &rArr; MPU_Read &rArr; I2C_Read
+<P><STRONG><a name="[6d]"></a>main</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, main.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = main &rArr; MPU6050_Read_Accel &rArr; MPU_Read &rArr; I2C_Read
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Config
